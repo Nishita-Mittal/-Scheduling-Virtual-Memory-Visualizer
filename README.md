@@ -31,3 +31,11 @@ A graphical visualizer designed to simulate key Operating System concepts such a
 - **Version Control:** Git & GitHub
 
 ---
+
+## 🧠 Concepts Covered
+
+- Process scheduling algorithms (FCFS, SJF, Round Robin, Priority)
+- Page replacement techniques (FIFO, LRU, Optimal)
+- Real-time visualization of Gantt Charts and Memory Access
+- Context switching and waiting time simulation
+
