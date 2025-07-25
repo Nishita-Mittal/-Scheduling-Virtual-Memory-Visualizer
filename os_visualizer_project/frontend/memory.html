@@ -1,0 +1,81 @@
+
+<!--memory.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Management - OS Visualizer</title>
+  <link rel="stylesheet" href="css/cpu&memory.css">
+</head>
+<body>
+
+    <header>
+        <h1>🧠 Memory Management Algorithms</h1>
+    </header>
+
+    <div class="description">
+        Choose a memory replacement algorithm to simulate and visualize how pages are managed in memory.
+    </div>
+
+    <!-- Tab Menu -->
+    <div class="tab-buttons">
+        <button class="tab-button active" onclick="showAlgo('fifo', event)">FIFO</button>
+        <button class="tab-button" onclick="showAlgo('lru', event)">LRU</button>
+        <button class="tab-button" onclick="showAlgo('optimal', event)">Optimal</button>
+    </div>
+
+    <!-- FIFO Section -->
+    <div id="fifo" class="algo-section active">
+        <h2>FIFO (First-In First-Out)</h2>
+        <p>This is where your FIFO simulation form and result will go.</p>
+        <div class="form-container">
+            <label>Number of Frames: <input type="number" id="fifo-frames" min="1" value="3"></label><br><br>
+            <label>Reference String: <input type="text" id="fifo-reference" placeholder="e.g. 7, 0, 1, 2, 0, 3"></label><br><br>
+            <button onclick="runFIFO()">Run FIFO</button>
+            </div>
+           <div id="fifo-output">
+                <h3 id="fifo-faults"></h3> <!-- ADD THIS -->
+                <canvas id="fifo-memory-chart"></canvas>
+            </div>
+
+    </div>
+
+    <!-- LRU Section -->
+    <div id="lru" class="algo-section">
+        <h2>LRU (Least Recently Used)</h2>
+        <p>This is where your LRU simulation form and result will go.</p>
+         <!-- LRU Form -->
+    <div class="form-container">
+        <label>Number of Frames: <input type="number" id="lru-frames" min="1" value="3"></label><br><br>
+        <label>Reference String: <input type="text" id="lru-reference" placeholder="e.g. 7, 0, 1, 2, 0, 3"></label><br><br>
+        <button onclick="runLRU()">Run LRU</button>
+    </div>
+    <div id="lru-output">
+        <h3 id="lru-faults"></h3> <!-- ADD THIS -->
+        <canvas id="lru-memory-chart"></canvas>
+    </div>
+
+    </div>
+
+    <!-- Optimal Section -->
+    <div id="optimal" class="algo-section">
+        <h2>Optimal Replacement</h2>
+        <p>This is where your Optimal simulation form and result will go.</p>
+         <!-- Optimal Form -->
+    <div class="form-container">
+      <label>Number of Frames: <input type="number" id="optimal-frames" min="1" value="3"></label><br><br>
+      <label>Reference String: <input type="text" id="optimal-reference" placeholder="e.g. 7, 0, 1, 2, 0, 3"></label><br><br>
+      <button onclick="runOptimal()">Run Optimal</button>
+    </div>
+    <div id="optimal-output">
+        <h3 id="optimal-faults"></h3> <!-- ADD THIS -->
+        <canvas id="optimal-memory-chart"></canvas>
+    </div>
+
+    </div>
+    <script src="js/memory.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+
+</html>

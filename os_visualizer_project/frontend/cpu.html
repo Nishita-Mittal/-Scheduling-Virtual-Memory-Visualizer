@@ -1,0 +1,174 @@
+
+<!--cpu.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CPU Scheduling - OS Visualizer</title>
+    <link rel="stylesheet" href="css/cpu&memory.css">
+</head>
+<body>
+    <header>
+        <h1>🔄 CPU Scheduling Algorithms</h1>
+    </header>
+
+    <div class="description">
+        Choose an algorithm below to explore how process scheduling works under different strategies.
+    </div>
+    
+    <!-- Tab Menu -->
+    <div class="tab-buttons">
+        <button class="tab-button active" onclick="showAlgo('fcfs')">FCFS</button>
+        <button class="tab-button" onclick="showAlgo('sjf')">SJF</button>
+        <button class="tab-button" onclick="showAlgo('rr')">Round Robin</button>
+        <button class="tab-button" onclick="showAlgo('priority')">Priority</button>
+    </div>
+
+    <!-- FCFS Section -->
+    <div id="fcfs" class="algo-section active">
+        <h2>FCFS (First Come First Serve)</h2>
+        <div class="form-container">
+    <table id="fcfs-table">
+        <thead>
+            <tr>
+                <th>Process ID</th>
+                <th>Arrival Time</th>
+                <th>Burst Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="fcfs-tbody">
+            <tr>
+                <td>P1</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><input type="number" value="5" min="1" /></td>
+               <td><button onclick="deleteRow(this, 'fcfs-tbody')">❌</button></td>
+
+        </tbody>
+    </table>
+   <button onclick="addRow('fcfs-tbody')">Add Process</button>
+   <button onclick="runCpuAlgorithm('fcfs', 'fcfs-tbody')">Run FCFS</button>
+</div>
+
+<!-- Output Section -->
+<div id="fcfs-output" style="margin-top: 30px;">
+    <!-- Gantt chart will go here -->
+     <canvas id="fcfs-gantt-chart"></canvas>
+</div>
+<div id="avg-tat-fcfs"></div>
+<div id="avg-wt-fcfs"></div>
+</div>
+
+    <!-- SJF Section -->
+<div id="sjf" class="algo-section">
+    <h2>SJF (Shortest Job First)</h2>
+    <div class="form-container">
+        <table id="sjf-table">
+            <thead>
+                <tr>
+                    <th>Process ID</th>
+                    <th>Arrival Time</th>
+                    <th>Burst Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="sjf-tbody">
+                <tr>
+                    <td>P1</td>
+                    <td><input type="number" value="0" min="0" /></td>
+                    <td><input type="number" value="5" min="1" /></td>
+                    <td><button onclick="deleteRow(this, 'sjf-tbody')">❌</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="addRow('sjf-tbody')">Add Process</button>
+        <button onclick="runCpuAlgorithm('sjf', 'sjf-tbody')">Run SJF</button>
+
+    </div>
+    <div id="sjf-output" style="margin-top: 30px;">
+        <canvas id="sjf-gantt-chart"></canvas>
+    </div>
+<div id="avg-tat-sjf"></div>
+<div id="avg-wt-sjf"></div>
+
+</div>
+
+    <!-- Round Robin Section -->
+<div id="rr" class="algo-section">
+    <h2>Round Robin</h2>
+    <div class="form-container">
+        <table id="rr-table">
+            <thead>
+                <tr>
+                    <th>Process ID</th>
+                    <th>Arrival Time</th>
+                    <th>Burst Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="rr-tbody">
+                <tr>
+                    <td>P1</td>
+                    <td><input type="number" value="0" min="0" /></td>
+                    <td><input type="number" value="5" min="1" /></td>
+                    <td><button onclick="deleteRow(this, 'rr-tbody')">❌</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="addRow('rr-tbody')">Add Process</button>
+        <label for="quantum">Quantum:</label>
+        <input type="number" id="quantum" min="1" value="2" style="margin: 5px;" />
+        <button onclick="runCpuAlgorithm('rr', 'rr-tbody')">Run Round Robin</button>
+
+    </div>
+    <div id="rr-output" style="margin-top: 30px;">
+        <!-- Gantt chart will go here -->
+         <canvas id="rr-gantt-chart"></canvas>
+    </div>
+    <div id="avg-tat-rr"></div>
+    <div id="avg-wt-rr"></div>
+
+</div>
+
+    <!-- Priority Section -->
+<div id="priority" class="algo-section">
+    <h2>Priority Scheduling</h2>
+    <div class="form-container">
+        <table id="priority-table">
+            <thead>
+                <tr>
+                    <th>Process ID</th>
+                    <th>Arrival Time</th>
+                    <th>Burst Time</th>
+                    <th>Priority</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="priority-tbody">
+                <tr>
+                    <td>P1</td>
+                    <td><input type="number" value="0" min="0" /></td>
+                    <td><input type="number" value="5" min="1" /></td>
+                    <td><input type="number" value="1" min="1" /></td>
+                    <td><button onclick="deleteRow(this, 'priority-tbody')">❌</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="addRow('priority-tbody')">Add Process</button>
+        <button onclick="runCpuAlgorithm('priority', 'priority-tbody')">Run Priority</button>
+
+    </div>
+    <div id="priority-output" style="margin-top: 30px;">
+        <!-- Gantt chart will go here -->
+         <canvas id="priority-gantt-chart"></canvas>
+    </div>
+    <div id="avg-tat-priority"></div>
+    <div id="avg-wt-priority"></div>
+
+</div>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cpu.js"></script>
+</body>
+</html>
