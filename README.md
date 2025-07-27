@@ -39,3 +39,8 @@ A graphical visualizer designed to simulate key Operating System concepts such a
 - Real-time visualization of Gantt Charts and Memory Access
 - Context switching and waiting time simulation
 
+---
+
+## 🙋‍♀️ Author 
+Nishita Mittal 
+📧 nishitamittal0816@gmail.com
